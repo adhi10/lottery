@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Lottery</title>
+</head>
+
+<body>
+    <script language="javascript">
+
+        var arr = []
+        for (i = 0; i < 5; i++)
+            arr.push(Math.ceil(Math.random() * 48));
+
+        document.write("Random Pick: " + arr + "<br>");
+
+        arr.sort(function (a, b) { return a - b });
+        var lBall = Math.ceil(Math.random() * 18);
+
+        document.write("Random Picked Lucky Ball number: " + lBall + "<br>");
+
+        document.write("Pick sorted: " + arr + "<br>");
+
+        var userNum = prompt("Please enter the first 5 winning numbers.", "");
+        var userlBall = prompt("Please enter the lucky ball number.", "");
+
+        document.write("The winning numbers: " + userNum + "<br>");
+
+        document.write("Winning Lucky Ball number: " + userlBall + "<br>");
+
+        nums = userNum.split(' ');
+        count = 0;
+        for (i = 0; i < 5; i++) {
+            for (j = 0; j < 5; j++) {
+                if (arr[j] == nums[i])
+                    count++;
+            }
+        }
+
+        document.write("Number of matches: " + count + "<br>");
+
+        lBallMach = false;
+        if (userlBall == lBall) {
+            lBallMach = true;
+            document.write("Lucky Ball matched! <br>");
+        }
+        else
+            document.write("Lucky Ball did not match <br>");
+
+        //Computing winning amount
+
+        if (count == 0 && lBallMach)
+            document.write("Your winnings: $4");
+        else if (count == 1 && lBallMach)
+            document.write("Your winnings: $6");
+        else if (count == 2 && !lBallMach)
+            document.write("Your winnings: $3");
+        else if (count == 2 && lBallMach)
+            document.write("Your winnings: $25");
+        else if (count == 3 && !lBallMach)
+            document.write("Your winnings: $20");
+        else if (count == 3 && lBallMach)
+            document.write("Your winnings: $150");
+        else if (count == 4 && !lBallMach)
+            document.write("Your winnings: $200");
+        else if (count == 4 && lBallMach)
+            document.write("Your winnings: $5000");
+        else if (count == 5 && !lBallMach)
+            document.write("Your winnings: $25,000 a YEAR for LIFE");
+        else if (count == 5 && lBallMach)
+            document.write("Your winnings: $7,000 a WEEK for LIFE");
+        else
+            document.write("Your winnings: $0");
+
+
+
+    </script>
+
+</body>
+
+
+</html>
